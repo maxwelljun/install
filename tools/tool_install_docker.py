@@ -26,14 +26,14 @@ class Tool(BaseTool):
         CmdTask('install -m 0755 -d /etc/apt/keyrings', 10, os_command=True).run()
 
         # Add Docker GPG key
-        CmdTask('curl -fsSL "https://mirrors.tuna.tsinghua.edu.cn/docker-ce/linux/ubuntu/gpg" -o /etc/apt/keyrings/docker.asc', 10, os_command=True).run()
+        CmdTask('curl -fsSL "https://mirrors.tuna.tsinghua.edu.cn/docker-ce/linux/debian/gpg" -o /etc/apt/keyrings/docker.asc', 10, os_command=True).run()
         CmdTask('chmod a+r /etc/apt/keyrings/docker.asc', 10,os_command=True).run()
 
         # Add Docker repository
         if osarch == 'amd64':
-            CmdTask('echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/docker.asc] https://mirrors.tuna.tsinghua.edu.cn/docker-ce/linux/ubuntu $(lsb_release -cs) stable" > /etc/apt/sources.list.d/docker.list', os_command=True).run()
+            CmdTask('echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/docker.asc] https://mirrors.tuna.tsinghua.edu.cn/docker-ce/linux/debian $(lsb_release -cs) stable" > /etc/apt/sources.list.d/docker.list', os_command=True).run()
         elif osarch == 'arm64':
-            CmdTask('echo "deb [arch=arm64 signed-by=/etc/apt/keyrings/docker.asc] https://mirrors.tuna.tsinghua.edu.cn/docker-ce/linux/ubuntu $(lsb_release -cs) stable" > /etc/apt/sources.list.d/docker.list', os_command=True).run()
+            CmdTask('echo "deb [arch=arm64 signed-by=/etc/apt/keyrings/docker.asc] https://mirrors.tuna.tsinghua.edu.cn/docker-ce/linux/debian $(lsb_release -cs) stable" > /etc/apt/sources.list.d/docker.list', os_command=True).run()
         else:
             return False
 
