@@ -1,5 +1,5 @@
 mkdir -p /tmp/fishinstall/tools/translation/assets
-wget http://mirror.fishros.com/install/install.py -O /tmp/fishinstall/install.py 2>>/dev/null 
+wget http://github.com/maxwelljun/install/install.py -O /tmp/fishinstall/install.py 2>>/dev/null 
 source /etc/profile
 if [ $UID -eq 0 ];then
     apt-get install sudo 
